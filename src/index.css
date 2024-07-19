@@ -1,0 +1,186 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* add box-sizing to ensure padding and border are included in width and height calculations */
+}
+
+
+.keyL {
+  border: 2px solid black;
+  padding: 2px;
+  border-radius: 10px;
+}
+
+.key-logger {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #fff;
+  color: #000;
+}
+
+.dark-mode {
+  background-color: #000;
+  color: #fff;
+}
+
+.mode-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f1bf0b;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.mode-button:hover {
+  background-color: rgb(0, 189, 189);
+}
+
+button {
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; /* add flex-wrap to allow buttons to wrap to new line on smaller screens */
+}
+
+.button-logging{
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #8b8b8b;
+}
+
+.key-press-display {
+  display: flex;
+  justify-content:space-evenly;
+  width: 70%;
+}
+
+.pressed-down,
+.pressed-up {
+  background-color: #9400D3;
+  color: white;
+  padding: 20px;
+  border-radius: 5px;
+  width: 45%;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 5px;
+}
+
+/* Media queries */
+
+/* Small screens (max-width: 768px) */
+@media only screen and (max-width: 768px) {
+ .key-logger {
+    min-height: 80vh; /* reduce min-height to accommodate smaller screens */
+  }
+ .button-container {
+    flex-direction: column; /* change button container to column layout on smaller screens */
+  }
+  button {
+    margin-top: 10px; /* reduce margin-top on smaller screens */
+    margin-right: 10px; /* reduce margin-right on smaller screens */
+  }
+ .key-press-display {
+    flex-direction: column; /* change key-press-display to column layout on smaller screens */
+  }
+ .pressed-down,
+ .pressed-up {
+    width: 90%; /* increase width of pressed-down and pressed-up on smaller screens */
+    margin-left: 0; /* remove margin-left on smaller screens */
+  }
+}
+
+/* Extra small screens (max-width: 480px) */
+@media only screen and (max-width: 480px) {
+ .key-logger {
+    min-height: 60vh; /* reduce min-height even further on extra small screens */
+  }
+ .mode-button {
+    padding: 5px 10px; /* reduce padding on mode button on extra small screens */
+  }
+  button {
+    font-size: 16px; /* reduce font-size on extra small screens */
+    padding: 5px; /* reduce padding on buttons on extra small screens */
+  }
+ .pressed-down,
+ .pressed-up {
+    padding: 10px; /* reduce padding on pressed-down and pressed-up on extra small screens */
+  }
+}
+
+/* dark mode */
+:root{
+  --background-color: #f6f6f6;
+  --foreground-color: #003cff;
+  --primary-text-color: #0a0a0a;
+  --secondary-text-color: #ffffff;
+  --toggle-bg: #f0eb9d;
+  --toggle-fg: #ffd000;
+}
+
+[data-theme="dark"] {
+  --background-color: #0a0a0a;
+  --foreground-color: #567aff;
+  --primary-text-color: #f6f6f6;
+  --secondary-text-color: #0a0a0a;
+  --toggle-bg: #283452;
+  --toggle-fg: #00a6ff;
+}
+
+.toggle-container{
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+
+.toggle {
+  visibility: hidden;
+}
+
+.toggle + label {
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: var(--primary-text-color);
+}
+
+.toggle + label::before{
+  content: "";
+  height: 1em;
+  width: 2em;
+  
+  border-radius: 1em;
+  background-color: var(--toggle-bg);
+  margin-right: 0.5em;
+  transition: background-color 250ms ease-in-out;
+}
+
+.toggle + label::after{
+  content: "";
+  height: 0.8em;
+  width: 0.8em;
+  border-radius: 1em;
+  background-color: var(--toggle-fg);
+  position: absolute;
+  left: 0.2em;
+  transition: background-color 250ms ease-in-out, transform 250ms ease-in-out
+}
+
+.toggle:checked + label::after{
+  transform: translateX(100%);
+}
