@@ -77,7 +77,9 @@ const keylogger = () => {
           ))}
         </div>
       </div>
-        <input ref={inputRef} type="text" style={{ opacity: 1, height: '100%', width: '100%', padding: '100%'}} />
+        <div>
+          <input ref={inputRef} type="text" style={{ opacity: 1, height: '100%', width: '100%', padding: '100%'}} />
+        </div>
     </div>
     </div>
   );
