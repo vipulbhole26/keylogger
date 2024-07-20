@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useref } from 'react';
 
 const keylogger = () => {
   const [isLogging, setIsLogging] = useState(false);
   const [keyPresses, setKeyPresses] = useState([]);
   const [darkMode, setDarkMode] = useState(true);
   // const [isDark, setIsDark] = useState(true);
+  useEffect(() => {
+    if (isLogging) {
+      inputRef.current.focus();
+    }
+  }, [isLogging])
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -72,6 +77,7 @@ const keylogger = () => {
           ))}
         </div>
       </div>
+        <input ref={inputRef} type="text" style={{ opacity: 1, height: '100%', width: '100%', padding: 10, }} />
     </div>
     </div>
   );
