@@ -184,3 +184,7 @@ button:hover {
 .toggle:checked + label::after{
   transform: translateX(100%);
 }
+
+.keyPresses{
+  padding: 20px;
+}
