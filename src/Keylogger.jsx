@@ -4,11 +4,6 @@ const keylogger = () => {
   const [isLogging, setIsLogging] = useState(false);
   const [keyPresses, setKeyPresses] = useState([]);
   const [darkMode, setDarkMode] = useState(true);
-  const inputRef = useRef(null);
-
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
   // const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
@@ -77,7 +72,6 @@ const keylogger = () => {
           ))}
         </div>
       </div>
-        <input ref={inputRef} type="text" style={{ opacity: 0, height: 0, width: 0 }} />
     </div>
     </div>
   );
